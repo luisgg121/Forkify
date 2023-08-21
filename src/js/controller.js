@@ -113,6 +113,12 @@ const controlAddRecipe = async function (newRecipe) {
   }
 };
 
+// d. En el archivo controller, crea la función init:
+// i. Dentro del cuerpo instancia el método addHandlerRender recién creado
+// y pásale como parámetro controlRecipes.
+// ii. Invoca a la función init
+
+
 const init = function () {
   model.init();
   bookmarkView.addHandlerLoadBookmarks(controlBookmarks);
@@ -137,6 +143,10 @@ init();
 //     }, s * 1000);
 //   });
 // };
+
+
+// a. Corta del archivo controller.js los listener de hash y de carga que se encuentran
+// al final del archivo.
 
 // window.addEventListener('hashchange', showRecipe);
 

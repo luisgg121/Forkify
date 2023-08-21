@@ -2,6 +2,16 @@ import icons from '../../img/icons.svg'; // Parcel 2
 import fracty from "fracty";
 
 // common code to all views
+// como hay un código común a tidas las vistas, dicho código se establece en el archivo views.js
+
+
+// b. En el archivo recipeView.js crea el método addHandlerRender dentro de la
+// clase RecipeView y debajo del renderSpinner. Envíale como parámetro un handler
+// y en el cuerpo, pega el código copiado del archivo controller.js
+// c. Modifica los parámetros que recibe el listener, pásale el evento (ev) y el handler
+// recibido.
+
+
 export default class View {
   render(data, render = true) {
     if (!data || (Array.isArray(data) && data.length === 0))
@@ -68,6 +78,24 @@ export default class View {
     this._parentElement.innerHTML = '';
   }
 
+  // a. En la clase RecipeView crea un nuevo método responsable de mostrar el
+  // mensaje de error:
+  // i. Nómbralo renderError y pásale como parámetro message =
+  // this._errorMessage.
+  // ii. Crea la variable _errorMessage y asígnale el siguiente texto: 'We could
+  // not find that recipe. Please try another one!'.
+  // iii. En el cuerpo de la función declara la constante markup.
+  // iv. Colócale el código del div con clase error que se encuentra en el
+  // archivo index.html.
+  // v. Modifica el archivo iconos del href y colócale la variable ${icons}.
+  // vi. Modifica el mensaje del párrafo y ponle la variable ${message}.
+  // vii. Llama al método privado #clear y el insertAdjacentHTML como en
+  // los otros métodos.
+  // b. Manda a llamar el errorRender desde el catch de la función controlRecipes y
+  // borra el console.log que se utilizaba.
+  // c. Para poder propagar el error generado en loadRecipe, utiliza la función throw
+  // err en el catch
+
   renderError(message = this._errorMessage) {
     const markup = `
             <div class="error">
@@ -82,6 +110,13 @@ export default class View {
     this._clear();
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
+
+
+//   3. Parecido al anterior, genera un manejador de mensajes exitosos. Utiliza la base del
+// método renderError:
+// a. Copia el método renderError y renómbralo como renderMessage.
+// b. Pásale como parámetro message=this._message.
+// c. Cambia el icono de icon-alert-triangle a icon-smile
 
   renderMessage() {
     const markup = `
