@@ -12,7 +12,7 @@ import 'regenerator-runtime/runtime';
 
 // if (module.hot) {
 //   module.hot.accept();
-// }
+// }state
 
 // Application Logic
 const controlRecipe = async function () {
@@ -36,6 +36,21 @@ const controlRecipe = async function () {
     recipeView.renderError();
   }
 };
+
+// a. En el archivo controller.js crea la función asíncrona controlSearchResults con una
+// estructura try – catch:
+// i. Dentro del try realiza lo siguiente:
+// 1. Invoca a la función model.loadsearchResults con el parámetro query,
+// recuerda que esta función debe esperar(await).
+// 2. Imprime en la consola el resultado (state.search.results).
+// ii. Dentro del catch imprime en la consola el error (err).
+// iii. Prueba la funcionalidad invocando a la función controlSerachResults
+
+// c. En el archivo controller realiza lo siguiente:
+// i. Importa la clase SearchView.
+// ii. En la función controlSearchResults instancia la función searchView.getQuery
+// y asígnala a la constante query.
+// iii. Valida que, si no existe ninguna consulta, regrese inmediatamente
 
 const controlSearchResults = async function () {
   try {
@@ -118,6 +133,8 @@ const controlAddRecipe = async function (newRecipe) {
 // y pásale como parámetro controlRecipes.
 // ii. Invoca a la función init
 
+// iii. En el controller, agrega a la función init el método
+// searchView.addHandlerSearch con el parámetro controlSearchResults).
 
 const init = function () {
   model.init();

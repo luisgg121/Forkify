@@ -2,6 +2,13 @@ import { async } from 'regenerator-runtime';
 import { API_URL, RESULT_PAGE_SIZE, KEY } from './config.js';
 import { AJAX } from './helpers.js';
 
+
+// 2. Para almacenar esta información, realiza los siguientes cambios:
+// a. En el objeto state, crea una nueva propiedad llamada search y como valor
+// tendrá un objeto que a su vez tendrá dos propiedades:
+// i. La propiedad query que tendrá inicialmente la cadena vacía como valor.
+// ii. La propiedad results que tendrá como valor un arreglo vacío
+
 export const state = {
   recipe: {},
   search: {
@@ -43,7 +50,10 @@ export const loadRecipe = async function (id) {
   }
 };
 
-
+// b. En la función loadSearchResults realiza estos cambios:
+// i. Asigna la variable query a state.search.results.
+// ii. Asigna a state.search.results la matriz con los nuevos objetos.
+// iii. Envía a la consola los resultados, deberían ser similares a esto
 
 export const loadSearchResults = async function (query) {
   try {
