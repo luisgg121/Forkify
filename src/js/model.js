@@ -9,6 +9,12 @@ import { AJAX } from './helpers.js';
 // i. La propiedad query que tendrá inicialmente la cadena vacía como valor.
 // ii. La propiedad results que tendrá como valor un arreglo vacío
 
+// b. En el archivo del modelo, realiza los siguientes cambios:
+// i. Importa la constante RES_PER_PAGE.
+// ii. En el state agrega las siguientes propiedades:
+// 1. Page con el valor 1 por defecto.
+// 2. A resultsPerPage asígnale el valor de la constante RES_PER_PAGE
+
 export const state = {
   recipe: {},
   search: {
@@ -85,6 +91,23 @@ export const loadSearchResults = async function (query) {
     throw err;
   }
 };
+
+// iii. En la parte final del archivo crea una función expresada con las siguientes
+// características:
+// 1. Asígnale el nombre getSearchResultsPage.
+// 2. La función recibe el parámetro page (iguálalo a state.search.page para
+// prevenir algún error si es que no se pasa nada en page).
+// 3. Exporta la función recién creada
+// 4. En el cuerpo de la función haz lo siguiente:
+// a. Asigna el valor de page pasado como parámetro a
+// starte.search.page.
+// b. Crea las constantes start y end, para hacer que su contenido sea
+// dinámico, realiza lo siguiente:
+// i. start asígnale el valor de (page –1) y multiplícalo por
+// state.search.resultPerPage
+// ii. end solo multiplícalo por state.search.resultPerPage
+// c. Retorna una parte del arreglo state.search.results utilizando el
+// método slice que recibirá como parámetros las constantes start y end
 
 export function getSearchResultPage(page = 1) {
   state.search.page = page;

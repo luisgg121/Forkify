@@ -52,6 +52,11 @@ const controlRecipe = async function () {
 // y asígnala a la constante query.
 // iii. Valida que, si no existe ninguna consulta, regrese inmediatamente
 
+// c. En el archivo del controlador, en la función SearchResults, modifica la forma en la que
+// se hace el render de los resultados para que se cambien los siguientes: en lugar de
+// resultsView.render(model.state.search.results), que ahora tome los resultados de la función
+// resultsView.render(model.getSearchResultsPage).
+
 const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
