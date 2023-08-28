@@ -10,11 +10,7 @@ import { MODAL_CLOSE_SEC } from './config.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
-// if (module.hot) {
-//   module.hot.accept();
-// }state
 
-// Application Logic
 const controlRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -61,14 +57,14 @@ const controlSearchResults = async function () {
   try {
     resultsView.renderSpinner();
 
-    //get the query from the search view
+    
     const query = searchView.getQuery();
     if (!query) return;
 
-    // load the recipes from the model
+    
     await model.loadSearchResults(query);
 
-    // render the results with the results view
+    
     resultsView.render(model.getSearchResultPage());
     paginationView.render(model.state.search);
   } catch (error) {
@@ -88,14 +84,14 @@ const controlServings = function (newServings) {
 };
 
 const controlAddBookmark = function () {
-  // 0) add/remove bookmarks
+  
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id);
 
-  // 1) update the bookmark button
+  
   recipeView.update(model.state.recipe);
 
-  // 2) render bookmarks in the bookmark view
+  
   bookmarkView.render(model.state.bookmarks);
 };
 
@@ -110,19 +106,19 @@ const controlAddRecipe = async function (newRecipe) {
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
 
-    // Render recipe
+    
     recipeView.render(model.state.recipe);
 
-    // render sucess message
+    
     addRecipeView.renderMessage();
 
-    // render bookmarks view
+    
     bookmarkView.render(model.state.bookmarks);
 
-    // change ID in URL
+    
     window.history.pushState(null, '', `#${model.state.recipe.id}`);
 
-    // close form window
+    
     setTimeout(function () {
       addRecipeView.toggleWindow();
       addRecipeView.restoreMarkup();
@@ -154,25 +150,3 @@ const init = function () {
 
 init();
 
-
-
-// const recipeContainer = document.querySelector('.recipe');
-
-// const timeout = function (s) {
-//   return new Promise(function (_, reject) {
-//     setTimeout(function () {
-//       reject(new Error(`Request took too long! Timeout after ${s} second`));
-//     }, s * 1000);
-//   });
-// };
-
-
-// a. Corta del archivo controller.js los listener de hash y de carga que se encuentran
-// al final del archivo.
-
-// window.addEventListener('hashchange', showRecipe);
-
-
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////

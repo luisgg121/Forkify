@@ -11,7 +11,7 @@ class PaginationView extends View {
       e.preventDefault();
       const btn = e.target.closest('.btn--inline');
 
-      // you may click on any white space area at the handler will be triggered :(
+      
       if (!btn) return;
 
       const goto = +btn.dataset.goto;

@@ -1,7 +1,7 @@
-import icons from '../../img/icons.svg'; // Parcel 2
+import icons from '../../img/icons.svg'; 
 import fracty from "fracty";
 
-// common code to all views
+
 // como hay un código común a tidas las vistas, dicho código se establece en el archivo views.js
 
 
@@ -20,12 +20,10 @@ export default class View {
     this._data = data;
     const markup = this._generateMarkup();
 
-    // in case of preview we actually don't need to render but to generate
-    // markup only. But why do not we call generateMarkup directly
-    // answer is that we need to set _data data member which is set in render
+    
     if (!render) return markup;
 
-    this._clear(); // to delete the spinner.
+    this._clear(); 
     this._parentElement.insertAdjacentHTML('afterbegin', markup);
   }
 
@@ -36,7 +34,7 @@ export default class View {
     const newElements = Array.from(newDOM.querySelectorAll('*'));
     const curElements = Array.from(this._parentElement.querySelectorAll('*'));
 
-    // instead of the following line, simply attach an event handler to the load event to load the bookmarks.
+    
     if (curElements.length !== newElements.length) return this.render(data);
 
     newElements.forEach((newEl, i) => {
@@ -49,7 +47,7 @@ export default class View {
         curEl.textContent = newEl.textContent;
       }
 
-      // update the attributes for all changed elements (مش هتخسر حاجة)
+      
       if (!newEl.isEqualNode(curEl)) {
         Array.from(newEl.attributes).forEach(attr => {
           curEl.setAttribute(attr.name, attr.value);
